@@ -1,0 +1,48 @@
+groups:
+- name: NDAC-FreeIPA-alerts
+  rules:
+  - alert: Free IPA Close Wait Connection Count increased more than 200
+    expr: ndac_freeipa_close_wait_connection_count > 200
+    for: 2m
+    labels:
+      severity: major
+      alertTime: '{{"{{"}} with query "time()" {{"}}"}} {{"{{"}}. | first | value | humanizeTimestamp {{"}}"}} {{"{{"}}end{{"}}"}}'
+    annotations:
+      summary: "Free IPA Close Wait Connection Count increased more than 200 in 2m"
+      description: "Free IPA Close Wait Connection Count increased more than 200 in 2m"
+  - alert: Free IPA Close Wait Connection Count increased more than 300
+    expr: ndac_freeipa_close_wait_connection_count > 300
+    for: 2m
+    labels:
+      severity: warning
+      alertTime: '{{"{{"}} with query "time()" {{"}}"}} {{"{{"}}. | first | value | humanizeTimestamp {{"}}"}} {{"{{"}}end{{"}}"}}'
+    annotations:
+       summary: "Free IPA Close Wait Connection Count increased more than 300 in 2m"
+       description: "Free IPA Close Wait Connection Count increased more than 300 in 2m"
+  - alert: Free IPA Close Wait Connection Count increased more than 600
+    expr: ndac_freeipa_close_wait_connection_count > 600
+    for: 2m
+    labels:
+      severity: critical
+      alertTime: '{{"{{"}} with query "time()" {{"}}"}} {{"{{"}}. | first | value | humanizeTimestamp {{"}}"}} {{"{{"}}end{{"}}"}}'
+    annotations:
+      summary: "Free IPA Close Wait Connection Count increased more than 600 in 2m"
+      description: "Free IPA Close Wait Connection Count increased more than 600 in 2m"
+  - alert: Only One Free IPA instance available
+    expr: haproxy_backend_active_servers < 2
+    for: 5m
+    labels:
+      severity: warning
+      alertTime: '{{"{{"}} with query "time()" {{"}}"}} {{"{{"}}. | first | value | humanizeTimestamp {{"}}"}} {{"{{"}}end{{"}}"}}'
+    annotations:
+      summary: "Only One Free IPA instance available"
+      description: "Only One Free IPA instance available"
+  - alert: Free IPA instance not available
+    expr: haproxy_backend_active_servers < 1
+    for: 5m
+    labels:
+      severity: critical
+      alertTime: '{{"{{"}} with query "time()" {{"}}"}} {{"{{"}}. | first | value | humanizeTimestamp {{"}}"}} {{"{{"}}end{{"}}"}}'
+    annotations:
+      summary: "Free IPA instance not available"
+      description: "Free IPA instance not available"
