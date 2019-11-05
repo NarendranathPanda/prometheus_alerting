@@ -1,0 +1,19 @@
+groups:
+- name: NDAC-Elastic-alerts
+  rules:
+  - alert: Elastic Health Warning
+    expr: elasticsearch_cluster_health_status{color="red"}==1 or (elasticsearch_cluster_health_status{color="green"}==1)+4 or (elasticsearch_cluster_health_status{color="yellow"}==1)+22 == 1
+    for: 5m
+    labels:
+      severity: critical
+    annotations:
+      summary: "The Elastic Exporter reports elastic health as Red"
+      description: "The Elastic Exporter reports elastic health as Red for 5m"
+  - alert: Elastic Health Warning
+    expr: elasticsearch_cluster_health_status{color="red"}==1 or (elasticsearch_cluster_health_status{color="green"}==1)+4 or (elasticsearch_cluster_health_status{color="yellow"}==1)+22 == 3
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: "The Elastic Exporter reports elastic health as Yellow"
+      description: "The Elastic Exporter reports elastic health as Yellow for 5m"
