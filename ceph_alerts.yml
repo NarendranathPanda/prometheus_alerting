@@ -1,0 +1,19 @@
+groups:
+- name: NDAC-Ceph-alerts
+  rules:
+  - alert: Ceph Health Warning
+    expr: ceph_health_status == 1
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: "The Ceph monitor daemons reports ceph health as warning"
+      description: "The Ceph monitor daemons reports ceph health as warning for 5m"
+  - alert: Ceph Health Error
+    expr: ceph_health_status == 2
+    for: 5m
+    labels:
+      severity: critical
+    annotations:
+      summary: "The Ceph monitor daemons reports ceph health as error"
+      description: "The Ceph monitor daemons reports ceph health as warning for 5m"
