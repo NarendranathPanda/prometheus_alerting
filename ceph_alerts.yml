@@ -1,5 +1,5 @@
 groups:
-- name: NDAC-Ceph-alerts
+- name: CEPH-Alerts
   rules:
   - alert: Ceph Health Warning
     expr: ceph_health_status == 1

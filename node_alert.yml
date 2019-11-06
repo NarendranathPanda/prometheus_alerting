@@ -1,5 +1,5 @@
 groups:
-  - name: Node Alerts
+  - name: Node-Exporter-Alerts
     rules:
     - alert: OutOfMemory
       expr: node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 < 10

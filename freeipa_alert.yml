@@ -1,5 +1,5 @@
 groups:
-- name: NDAC-FreeIPA-alerts
+- name: FreeIPA-alerts
   rules:
   - alert: Free IPA Close Wait Connection Count increased more than 200
     expr: ndac_freeipa_close_wait_connection_count > 200
