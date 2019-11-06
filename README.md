@@ -1,4 +1,4 @@
-# prometheus_alerting
+# Different Alerts for a kubernetes cluster
 This git repo contains various well know alerts and the lists are
  - CEPH
  - Container (cAdvisor Metric based)
