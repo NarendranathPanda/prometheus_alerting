@@ -2,7 +2,7 @@ groups:
   - name: Service Alerts
     rules:
     - alert: PodNotRunningPhase
-      expr: sum by (pod) (kube_pod_status_phase{phase=~"Pending|Unknown|Failed"}) != 1
+      expr: sum by (pod) (kube_pod_status_phase{phase=~"Pending|Unknown|Failed"}) == 1
       for: 1m
       labels:
        severity: critical
@@ -17,5 +17,3 @@ groups:
       annotations:
         summary: "Container {{ $labels.container }} having Pod {{ $labels.pod }} is either not Running nor in Ready"
         description: "Container {{ $labels.container }} having Pod {{ $labels.pod }} is either not Running nor in Ready \n  LABELS: {{ $labels }}"
-
-   
