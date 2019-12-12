@@ -9,7 +9,7 @@ groups:
       annotations:
        summary: "Pod {{ $labels.pod }} is not in Running Phase "
        description: "Pod {{ $labels.pod }} is not in Running Phase\n  LABELS: {{ $labels }}"
-    - alert: ContainerNotRunning
+    - alert: ContainerNotRunningNorReady
       expr: (sum by (pod,container) (kube_pod_container_status_running{namespace="kube-system"})  OR sum by (pod,container) (kube_pod_container_status_ready{namespace="kube-system"}))  !=1
       for: 1m
       labels:
