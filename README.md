@@ -8,3 +8,6 @@ This git repo contains various well know alerts and the lists are
  - Kubernetes (kube-state-metrics)
  - Node (Node exporter based)
  - Prometheus & Alertmanager
+ 
+ ContainerNotRunningNorReady : ![ContainerNotRunningNorReady](ContainerNotRunningNorReady.png)
+
