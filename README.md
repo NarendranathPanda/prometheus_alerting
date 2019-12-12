@@ -9,5 +9,5 @@ This git repo contains various well know alerts and the lists are
  - Node (Node exporter based)
  - Prometheus & Alertmanager
  
- ContainerNotRunningNorReady : ![ContainerNotRunningNorReady](ContainerNotRunningNorReady.png)
-
+ ContainerNotRunningNorReady: ![ContainerNotRunningNorReady](ContainerNotRunningNorReady.PNG)
+ PodNotRunningPhase: ![PodNotRunningPhase.PNG](PodNotRunningPhase.PNG)
