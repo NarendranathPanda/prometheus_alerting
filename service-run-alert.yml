@@ -1,0 +1,28 @@
+groups:
+  - name: Service Alerts
+    rules:
+    - alert: PodNotRunningPhase
+      expr: sum by (pod) (kube_pod_status_phase{namespace="kube-system",phase="Running"}) != 1
+      for: 1m
+      labels:
+       severity: critical
+      annotations:
+       summary: "Pod {{ $labels.pod }} is not in Running Phase "
+       description: "Pod {{ $labels.pod }} is not in Running Phase\n  LABELS: {{ $labels }}"
+    - alert: ContainerNotRunning
+      expr: sum by (pod) (kube_pod_container_status_running{namespace="kube-system"}) != 1
+      for: 1m
+      labels:
+        severity: critical
+      annotations:
+        summary: "Container {{ $labels.container }} having Pod {{ $labels.pod }} is not in Running  "
+        description: "Container {{ $labels.container }} having Pod {{ $labels.pod }}\n  LABELS: {{ $labels }}"
+
+    - alert: ContainerNotReady
+      expr: sum by (pod) (kube_pod_container_status_ready{namespace="kube-system"}) != 1
+      for: 1m
+      labels:
+        severity: critical
+      annotations:
+        summary: "Container {{ $labels.container }} having Pod {{ $labels.pod }} is not in Running  "
+        description: "Container {{ $labels.container }} having Pod {{ $labels.pod }}\n  LABELS: {{ $labels }}"
